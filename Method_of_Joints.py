@@ -41,7 +41,6 @@ def SumOfForcesInLocalX(node, unknown_bars):
     
     # 2. Contributions from known internal member loads
     for bar in node.bars:
-        if bar in node.bars:
             if bar.is_computed:
             sum_local_x += bar.axial_load * geom.CosineBars(local_x_bar, bar)
     
@@ -83,10 +82,10 @@ def SumOfForcesInLocalY(node, unknown_bars):
 # Perform the method of joints on the structure
 def IterateUsingMethodOfJoints(nodes,bars):
     counter = 0 
-    max_interations = len(bars) * 10 # Prevent infinite loops
-    
+    max_iterations = len(bars) * 10 # Prevent infinite loops
+   
     while any(not bar.is_computed for bar in bars):
-        if counter > max_interations:
+        if counter > max_iterations:
             sys.exit("Method of joints reached maximum iterations without solving all bars")
 
 
@@ -95,10 +94,10 @@ def IterateUsingMethodOfJoints(nodes,bars):
             if NodeIsViable(node):
                 if len(unknowns) == 2:
                     SumOfForcesInLocalY(node, unknowns)
-                    
                     unknowns = UnknownBars(node)
                     
                 if len(unknowns) == 1:
                     SumOfForcesInLocalX(node, unknowns[0])
     counter += 1
+    
 return bars

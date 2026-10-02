@@ -105,7 +105,7 @@ def IterateUsingMethodOfJoints(nodes,bars):
         
         # Safety check for infinite loop
         counter += 1
-        if counter > max_iterations:
+        if counter > max_interations:
             sys.exit("Method of joints reached maximum iterations without solving all bars")
             
         progress_made = False 

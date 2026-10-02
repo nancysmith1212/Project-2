@@ -33,10 +33,10 @@ def SumOfForcesInLocalX(node, local_x_bar):
     
     # 1. Contributions of external/reaction forces in global X and Y
     net_fy = node.GetNetYForce()
-    sum_local_x = net_fy * geom.CosineVectors(local_x_bar, [0,1])
+    sum_local_x = net_fy * geom.CosineVectors(local_x_vec, [0,1])
     
     net_fx = node.GetNetXForce()
-    sum_local_x += net_fy * geom.CosineVectors(local_x_bar, [1,0])
+    sum_local_x += net_fx * geom.CosineVectors(local_x_vec, [0, 1]) # double check brackets
     # Project external force vector onto local x direction
     
     # 2. Contributions from known internal member loads
@@ -64,7 +64,7 @@ def SumOfForcesInLocalY(node, unknown_bars):
     sum_local_y = net_fy * geom.SineVectors(local_x_vec, [0, 1])
   # what gives you the global x direction and local y direction?
     net_fx = node.GetNetXForce() # is this your global x
-    sum_local_x = net_fx * geom.SineVectors(local_x_vec, [0, 1])  # shouldnt you multilpy net_fx here?
+    sum_local_y += net_fx * geom.SineVectors(local_x_vec, [0, 1])  # shouldnt you multilpy net_fx here?
     
     
     for bar in node.bars:

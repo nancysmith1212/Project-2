@@ -6,6 +6,7 @@ Created on Wed Jul 14 12:37:32 2021
 @author: kendrick shepherd
 """
 
+
 import sys
 
 import Geometry_Operations as geom
@@ -33,10 +34,10 @@ def SumOfForcesInLocalX(node, local_x_bar):
     
     # 1. Contributions of external/reaction forces in global X and Y
     net_fy = node.GetNetYForce()
-    sum_local_x += net_fy * geom.CosineBars(local_x_bar, [0,1])
+    sum_local_x += net_fy * geom.CosineVectors(local_x_bar, [0,1])
     
     net_fx = node.GetNetXForce()
-    sum_local_x += net_fy * geom.CosineBars(local_x_bar, [1,0])
+    sum_local_x += net_fy * geom.CosineVectors(local_x_bar, [1,0])
     # Project external force vector onto local x direction
     
     # 2. Contributions from known internal member loads

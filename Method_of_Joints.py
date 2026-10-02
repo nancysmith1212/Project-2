@@ -42,7 +42,7 @@ def SumOfForcesInLocalX(node, unknown_bars):
     # 2. Contributions from known internal member loads
     for bar in node.bars:
             if bar.is_computed:
-            sum_local_x += bar.axial_load * geom.CosineBars(local_x_bar, bar)
+                sum_local_x += bar.axial_load * geom.CosineBars(local_x_bar, bar)
     
     local_x_bar_force = - sum_local_x   
     

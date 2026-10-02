@@ -98,6 +98,6 @@ def IterateUsingMethodOfJoints(nodes,bars):
                     
                 if len(unknowns) == 1:
                     SumOfForcesInLocalX(node, unknowns[0])
-    counter += 1
+        counter += 1
     
-return bars
+    return bars

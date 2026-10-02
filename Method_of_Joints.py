@@ -63,7 +63,7 @@ def SumOfForcesInLocalY(node, unknown_bars):
     sum_local_y = net_fy * geom.SineVectors(local_x_vec, [0, 1])
     
     net_fx = node.GetNetXForce()
-    sum_local_y = net_fy * geom.SineVectors(local_x_vec, [1, 0])
+    sum_local_x = net_fx * geom.SineVectors(local_x_vec, [1, 0])
     
     
     for bar in node.bars:
@@ -94,7 +94,7 @@ def IterateUsingMethodOfJoints(nodes,bars):
             if NodeIsViable(unknowns):
                 if len(unknowns) == 2:
                     SumOfForcesInLocalY(node, unknowns)
-                SumOfForcesInLocalX(node, unknowns[0])
+                SumOfForcesInLocalX(node, unknowns[0]) # might be error
         counter += 1
     
     return bars

@@ -27,7 +27,7 @@ def NodeIsViable(node):
     
 # Compute unknown force in bar due to sum of the
 # forces in the x direction
-def SumOfForcesInLocalX(node, unknown_bars):
+def SumOfForcesInLocalX(node, local_x_bar):
     # Vector direction of local x axis (pointing away from node along local_x_bar)
     local_x_vec = geom.BarNodeToVector(node, local_x_bar)
     

@@ -6,6 +6,7 @@ Created on Wed Jul 14 12:37:32 2021
 @author: kendrick shepherd
 """
 
+
 import sys
 
 import Geometry_Operations as geom
@@ -19,9 +20,8 @@ def UnknownBars(node):
     return unknown 
 
 # Determine if a node if "viable" or not
-def NodeIsViable(node):
-    unknowns = UnknownBars(node)
-    if len(unknowns) == 1 or len(unknowns) == 2:
+def NodeIsViable(unknown_node):
+    if len(unknown_node) == 1 or len(unknown_node) == 2:
         return True
     return False
     
@@ -91,13 +91,10 @@ def IterateUsingMethodOfJoints(nodes,bars):
 
         for node in nodes:
             unknowns = UnknownBars(node)
-            if NodeIsViable(node):
+            if NodeIsViable(unknowns):
                 if len(unknowns) == 2:
                     SumOfForcesInLocalY(node, unknowns)
-                    unknowns = UnknownBars(node)
-                    
-                if len(unknowns) == 1:
-                    SumOfForcesInLocalX(node, unknowns[0])
+                SumOfForcesInLocalX(node, unknowns[0])
         counter += 1
     
     return bars

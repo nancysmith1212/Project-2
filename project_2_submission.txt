@@ -1,7 +1,7 @@
 PartialCredit::T
-Q1::
-Q2::
-Q3::
+Q1:: T
+Q2:: T
+Q3:: T
 Q4::
 Q5::
 Q6::

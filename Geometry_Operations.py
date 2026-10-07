@@ -4,7 +4,7 @@
 Created on Wed Jul 14 11:25:01 2021
 
 @author: kendrick shepherd
-"""
+""" 
 
 import math
 import numpy as np

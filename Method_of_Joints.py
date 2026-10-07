@@ -29,6 +29,7 @@ def NodeIsViable(unknown_node):
 # forces in the x direction
 def SumOfForcesInLocalX(node, local_x_bar):
     # Vector direction of local x axis (pointing away from node along local_x_bar)
+    sum_local_x = 0
     local_x_vec = geom.BarNodeToVector(node, local_x_bar)
     
     # 1. Contributions of external/reaction forces in global X and Y
@@ -36,7 +37,7 @@ def SumOfForcesInLocalX(node, local_x_bar):
     sum_local_x = net_fy * geom.CosineVectors(local_x_vec, [0,1])
     
     net_fx = node.GetNetXForce()
-    sum_local_x += net_fx * geom.CosineVectors(local_x_vec, [0, 1]) # double check brackets
+    sum_local_x += net_fx * geom.CosineVectors(local_x_vec, [1, 0]) # double check brackets
     # Project external force vector onto local x direction
     
     # 2. Contributions from known internal member loads
@@ -53,6 +54,7 @@ def SumOfForcesInLocalX(node, local_x_bar):
 # Compute unknown force in bar due to sum of the 
 # forces in the y direction
 def SumOfForcesInLocalY(node, unknown_bars):
+    sum_local_y = 0
     local_x_bar = unknown_bars[0]
     other_bar = unknown_bars[1]
     
@@ -64,7 +66,7 @@ def SumOfForcesInLocalY(node, unknown_bars):
     sum_local_y = net_fy * geom.SineVectors(local_x_vec, [0, 1])
   # what gives you the global x direction and local y direction?
     net_fx = node.GetNetXForce() # is this your global x
-    sum_local_y += net_fx * geom.SineVectors(local_x_vec, [0, 1])  # shouldnt you multilpy net_fx here?
+    sum_local_y += net_fx * geom.SineVectors(local_x_vec, [1, 0])  # shouldnt you multilpy net_fx here?
     
     
     for bar in node.bars:
@@ -95,7 +97,7 @@ def IterateUsingMethodOfJoints(nodes,bars):
             if NodeIsViable(unknowns):
                 if len(unknowns) == 2:
                     SumOfForcesInLocalY(node, unknowns)
-                SumOfForcesInLocalX(node, unknowns[0]) # might be error
+                SumOfForcesInLocalX(node, unknowns[0]) # might be error 
         counter += 1
     
     return bars

@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jul 14 12:37:32 2021
-
-@author: kendrick shepherd
-"""
-
-
 import sys
 
 import Geometry_Operations as geom
@@ -21,7 +12,8 @@ def UnknownBars(node):
 
 # Determine if a node if "viable" or not
 def NodeIsViable(unknown_node):
-    if len(unknown_node) == 1 or len(unknown_node) == 2:
+    unknown_bars = UnknownBars(unknown_node)
+    if len(unknown_bars) == 1 or len(unknown_bars) == 2:
         return True
     return False
     
@@ -94,7 +86,7 @@ def IterateUsingMethodOfJoints(nodes,bars):
 
         for node in nodes:
             unknowns = UnknownBars(node)
-            if NodeIsViable(unknowns):
+            if NodeIsViable(node):
                 if len(unknowns) == 2:
                     SumOfForcesInLocalY(node, unknowns)
                 SumOfForcesInLocalX(node, unknowns[0]) # might be error 

@@ -84,5 +84,5 @@ Q82:: 17.00
 Q83:: N
 Q84:: N
 Q85:: N
-Q86:: The three trusses
-Q87::
+Q86:: The six truss uses less material than the scissor and eight truss. The loads six truss are higher than the eight and scissor truss. Some people might find the scissor truss more aesthetic or useful for a specific project. The eight and six truss have similar aesthetics that might be useful for specific projects. 
+Q87:: I would recommend using the six panel truss. It would be cheaper for the project because of the less material needed. It does have higher loads on the truss but it is still structurally stable and won't yield. In my opinion this truss is more aesthetically pleasing. I like simple truss structures and I think this would be the best for the project.

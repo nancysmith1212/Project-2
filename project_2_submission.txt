@@ -84,5 +84,5 @@ Q82:: 17.00
 Q83:: N
 Q84:: N
 Q85:: N
-Q86::
+Q86:: The three trusses
 Q87::
